@@ -1,0 +1,9 @@
+<ul class="nav">
+  <li ng-repeat="nav in navData" class="{{nav.type==1 ? 'hidden-folded padder m-t m-b-sm text-muted text-xs' : ''}}" ui-sref-active="{{nav.type==2 ? 'active' : ''}}">
+    <span ng-if="nav.type==1">{{nav.name}}</span>
+    <a ng-if="nav.type==2" ui-sref="{{nav.router}}">
+      <i class="glyphicon {{nav.icon}} {{nav.text_color}}"></i>
+      <span class="font-bold">{{nav.name}}</span>
+    </a>
+  </li>
+</ul>

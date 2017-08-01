@@ -1,0 +1,46 @@
+{
+	"status": 1,
+	"msg": "",
+	"data": {
+		"name": "top",
+		"menu": [{
+			"name": "数据分析",
+			"type": 1,
+			"id": 1
+		}, {
+			"name": "来源",
+			"id": 1,
+			"type": 2,
+			"icon": "glyphicon-stats",
+			"text_color": "text-primary-dker",
+			"router": "app.source"
+		}, {
+			"name": "页面",
+			"type": 2,
+			"icon": "glyphicon-calendar",
+			"text_color": "text-info-dker",
+			"router": "app.page"
+		}, {
+			"name": "访客",
+			"type": 2,
+			"icon": "glyphicon-user",
+			"text_color": "text-info-dker",
+			"router": "app.visitor"
+		},{
+			"name": "数据标签",
+			"type": 1
+		}, {
+			"name": "标记来源",
+			"type": 2,
+			"icon": "glyphicon-th",
+			"text_color": "text-success",
+			"router": "app.label_source"
+		}, {
+			"name": "标记页面",
+			"type": 2,
+			"icon": "glyphicon-briefcase",
+			"text_color": "text-info-lter",
+			"router": "app.label_page"
+		}]
+	}
+}

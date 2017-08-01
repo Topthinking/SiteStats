@@ -1,0 +1,593 @@
+.visitor{
+    float: left;
+    width: 100%;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #ccc;
+    .left{
+        float: left;
+        width: 250px;
+        .wrapper-md{
+            padding: 0px;
+            margin-top: 20px;
+        }
+    }
+
+    .right{
+        width: 100%;
+        float: right;
+        display: table-cell;        
+        .date{
+            float: right;
+            width: 100%;
+            margin-top: 20px;
+            .select-time{
+                float: left;
+                width: 42%;
+                button{
+                    width: 25%;
+                }
+            }   
+            .date-select{
+                float: right;
+                .start-date{
+                    float: left;
+                }
+                .to-date{
+                    float: left;
+                    font-size: 12px;
+                    line-height: 32px;
+                    padding: 0px 10px;
+                }
+                .end-date{
+                    float: left;
+                }
+                .download{
+                    float: left;
+                    margin-top: 8px;
+                    margin-left: 12px;
+                }
+                input{
+                    float: left;
+                    width: 120px;
+                }
+                .show-calendar{
+                    float: left;
+                    margin-left: -22px;
+                    margin-top: 10px;
+                }
+                .click-btn{
+                    float: left;
+                }
+            }
+            .device_show{
+                float: left;
+                margin-left: -4px;
+                button{
+                    height: 34px;
+                }
+            }
+            .city-list{
+                float: left;
+                margin-left: -1px;
+                button{
+                    height: 34px;
+                }
+            }
+        }
+        .data{
+            float: left;
+            width: 100%;
+            margin-top: 20px;
+        }       
+        .chart-detail{
+            float: left;
+            margin-top: 20px;
+            width: 100%;
+            background: #fff;
+            border: 1px solid #ccc;
+            .chart-title{
+                float: left;
+                width: 100%;
+                border-bottom: 1px solid #ccc;
+                .title{
+                    float: left;
+                    width: 100%;
+                    height: 53px;                   
+                    background: #ccc;
+                    background: rgb(246,248,247);
+                    .btn-group{
+                        float: left;
+                    }
+                    button{
+                        margin-left: 15px;
+                        margin-top: 11px;
+                        float: left;
+                    }
+                    .line-source,.line-param{
+                        float: left;
+                        margin-top: 17px;
+                        margin-left: 10px;
+                        font-size: 12px;
+                    }
+                    .dropdown-menu{
+                        float: left;
+                        margin-left: 15px;
+                    }
+                    label{
+                        float: right;
+                        margin-top: 15px;
+                        margin-right: 15px;
+                    }
+                }
+            }
+            .chart-polyline{
+                float: left;
+                width: 100%;
+                border-bottom: 1px solid #ccc;
+                .polyline-detail{
+                    float: left;
+                    width: 99%;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                }
+            }
+            .chart-pie{
+                float: left;
+                width: 40%;
+                border-right: 1px solid #ccc;           
+                .pie-detail{
+                    width: 100%;
+                    float: left;
+                    margin-top: 70px;
+                }
+            }
+            .chart-columnar{
+                float: left;
+                width: 60%;         
+                .columnar-detail{
+                    float: left;
+                    width: 100%;
+                    margin-top: 20px;
+                }
+            }
+        }
+        .content{
+            float: right;
+            width: 100%;
+            margin-top: 20px;
+            background: rgb(246,248,247);
+            .title{
+                float: left;
+                width: 100%;
+                border: 1px solid #ccc;
+                border-bottom-width: 0;
+                .fa{
+                    display: inline-block;
+                    font: normal normal normal 14px/1 FontAwesome;
+                    font-size: inherit;
+                    text-rendering: auto;
+                    -webkit-font-smoothing: antialiased;
+                }
+                .title-left{
+                    float: left;
+                    margin-left: 15px;
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                    .btn-group{
+                        float: left;
+                    }
+                    .btn-group:nth-child(n+2){
+                        margin-left: 5px;
+                    }
+                }
+                .title-right{
+                    float: right;
+                    margin-right: 15px;
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                    .pagination{
+                        margin: 0;
+                    }
+                }
+            }
+            .list{              
+                float: left;
+                width: 100%;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                border-top-width: 0;
+                .pagination-sm{
+                    float: right;
+                    margin-top: -45px;
+                    text-align: right;
+                }
+                td{
+                    white-space: nowrap;
+                }
+                .bottom-page{
+                    margin-top: 0px;
+                    margin-right: 15px;
+                }
+                .vistor-list{
+                    float: left;
+                    width: 100%;
+                    li:first-of-type{
+                        border-top: 1px solid #ccc;
+                    }
+                
+                    li{
+                        list-style-type: none;
+                        padding-bottom: 0px !important;
+                        border-bottom: 1px solid #ccc;
+                        .source{
+                            border-width: 0;
+                            margin-bottom: 0;
+                            width: initial;
+                        }
+                        .icon-screen-desktop{
+                            background: url("../../common/images/computer.png") no-repeat;
+                            width: 12px;
+                            height: 12px;
+                            position: absolute;
+                            margin-left: -20px;
+                        }
+                        .icon-screen-smartphone{
+                            background: url("../../common/images/phone.png") no-repeat;
+                            width: 12px;
+                            height: 12px;
+                            position: absolute;
+                            margin-left:-20px;
+                        }
+                        .spread{
+                            float: left;
+                            width: 100%;
+                            strong{
+                                background-color: #ccc;
+                                color: #000;
+                                padding: 3px 8px;
+                                border-radius: 2px;
+                                font-size: 12px;
+                                font-weight: normal;
+                                color:#fff;
+                            }
+                            .register{
+                                background-color: rgb(39, 194, 76);
+                            }
+                            .source{
+                                float: left;
+                                margin-top: 2px;
+                                a{
+                                    color:#23b7e5;
+                                }
+                                a:hover{
+                                    text-decoration: underline;
+                                }
+                            }
+                            .reg_state{
+                                float: left;
+                                margin-left: 20px;
+                            }
+                            b{
+                                font-weight: normal;
+                                float: left;
+                                font-size: 12px;
+                                margin-left: 5px;
+                                margin-top: 2px;
+                                color: #27c24c;
+                                i{
+                                    font-style: normal;
+                                    padding: 0px 2px;
+                                    margin-top: -1px;
+                                    float: left;
+                                    color: #27c24c;
+                                }
+                            }
+                        }
+                        .ip{
+                            float: left;
+                            margin-top: 5px;
+                            width: 100%;
+                            span{
+                                font-size: 12px;
+                                color: #aaa;
+                            }
+                        }
+                        .pull-right{
+                            div{
+                                span{
+                                    float: right;
+                                    width: 100%;
+                                    text-align: right;
+                                    color: #000;
+                                }
+                                .url a{
+                                    color: #23b7e5;
+                                }
+                                span:last-of-type{
+                                    margin-top: 14px;
+                                }
+                            }
+                        }
+                        .panel-default{
+                            border-width: 0;            
+                            .panel-title{
+                                background-color: #fff;
+                                margin-top: -10px;
+                                height: 78px;
+                                margin-left: -15px;
+                                margin-right: -15px;
+                                .accordion-toggle{
+                                    height: 100%;
+                                    .avatar{
+                                        margin-left: 15px;
+                                        margin-top: 12px;
+                                    }
+                                    .pull-right{
+                                        margin-right: 15px;
+                                        width: 40%;
+                                        span:first-of-type{
+                                            margin-top: 22px;
+                                            color:#aaa;
+                                        }
+                                        span:last-of-type{
+                                            margin-top: 5px;
+                                        }
+                                    }
+                                    .clear{
+                                        float: left;
+                                        width: 45%;
+                                        margin-top: 18px;
+                                        .spread{
+                                            float: left;
+                                            width: 100%;                                            
+                                        }
+                                        .ip{
+                                            float: left;
+                                            width: 100%;
+                                            margin-top: 2px;
+                                        }                                       
+                                    }
+                                }
+                            }
+                            .panel-body{
+                                border-top: 1px solid #ccc;
+                                float: left;
+                                width: 100%;
+                                background: #fff;
+                                padding: 0;
+                            }
+                        }
+                        .panel-heading{
+                            height: 78px;
+                        }
+                        .wrapper{
+                            margin-left: -40px;
+                        }
+                        .timeline{
+                            li{
+                                width: 100%;
+                                border-width: 0;
+                                margin-bottom: -30px;
+                                margin-top: 10px;
+                                .tl-wrap{
+                                    width: 95%;
+                                    margin-left: 50px;
+                                    .page_url{
+                                        margin-left: 10%;
+                                    }
+                                }
+                                .tl-content{
+                                    text-align: center;
+                                }
+                                .col-1{
+                                    width: 20%;
+                                }
+                                .col-2{
+                                    width: 10%;
+                                }
+                                .col-3{
+                                    width: 20%;
+                                }
+                                .col-4{
+                                    
+                                }
+                                .reg{
+                                    padding: 5px 44px;
+                                    float: left;
+                                    margin-left: -35px;
+                                    background-color: rgb(35,183,229);
+                                    color: #fff;
+                                    border-radius: 2px;
+                                }
+                                .b-info{
+                                    border-color: rgb(148,224,166);
+                                }
+                                .tl-wrap:before{
+                                    width: 14px;
+                                    height: 14px;
+                                    margin-left: -29px;
+                                    background:#fff;
+                                    border-width: 1px;
+                                    border-color: #ccc;
+                                    box-shadow: 0 0 0 0px;
+                                }
+                            }
+                        }
+                        .detail_title{
+                            float: left;
+                            border-bottom: 1px solid #ccc;
+                            width: 100%;
+                            span{
+                                padding: 3px 10px;
+                                background-color: #fff;
+                                border-radius: 2px;
+                                margin-left: 15px;
+                                margin-top: 15px;
+                                margin-bottom: 15px;
+                                float: left;
+                                a{
+                                    color:#000;
+                                }
+                            }
+                            .no_reg{
+                                background-color: #ccc;
+                                a{
+                                    cursor: default;
+                                    color:#fff;
+                                }
+                            }
+                            span.active{
+                                background-color: #23b7e5;
+                                a{
+                                    color:#fff;
+                                }
+                            }
+                        }
+                        .detail_path,.detail_leads,.detail_history{
+                            float: left;
+                            width: 100%;
+                            margin-bottom: 35px;
+                        }
+                        .detail_leads{
+                            .leads_loading{
+                                text-align: center;
+                                margin-top: 20px;
+                            }
+                            .leads_content{
+                                float: left;
+                                margin-top: 20px;
+                                .leads_list{
+                                    float: left;
+                                    width: 50%;
+                                    margin-bottom: 20px;
+                                }
+                                .leads_list:nth-last-of-type(2){
+                                    margin-bottom: 0px;
+                                }
+                                .leads_list:nth-last-of-type(1){
+                                    margin-bottom: 0px;
+                                }
+                                .line{
+                                    float: left;
+                                    width: 100%;
+                                    label{
+                                        float: left;
+                                        width: 130px;
+                                        text-align: right;
+                                    }
+                                    span{
+                                        float: left;
+                                        margin-left: 10px;
+                                    }
+                                }
+                            }
+                        }
+                        .detail_history{
+                            .history_loading{
+                                text-align: center;
+                                margin-top: 20px;
+                            }
+                            .history_content{
+                                float: left;
+                                margin-bottom: -35px;
+                                width: 100%;
+                                background: rgb(246,248,247);
+                                .title-left{
+                                    li{
+                                        border-width: 0px;
+                                    }
+                                }
+                                .title{
+                                    margin-bottom: 15px;
+                                }
+                                .vistor-history-list{
+                                    margin-right: 15px;
+                                    .panel-default{
+                                        
+                                    }
+                                    li{
+                                        .avatar{
+                                            margin-left: 13px;
+                                            margin-top: 13px;
+                                            img{
+                                                width: 32px;
+                                            }
+                                        }
+                                        .panel-heading{
+                                            height: 56px;
+                                        }
+                                        .panel-title{
+                                            height: 56px;
+                                            background-color: #fff;
+                                        }
+                                        .pull-right{
+                                            font-size: 10px;
+                                            span:first-of-type{
+                                                margin-top:13px;
+                                            }
+                                            span:last-of-type{
+                                                margin-top: 4px;
+                                            }
+                                        }
+                                        .clear{
+                                            font-size: 10px;
+                                            margin-top: 13px;
+                                            margin-left: -16px;
+                                            .spread{
+                                                font-size: 12px;
+                                            }
+                                            .ip{
+                                                margin-top: 2px;
+                                            }
+                                            .reg_state{
+                                                margin-top: 0px;
+                                                padding: 3px 6px;                                           
+                                            }
+                                        }
+                                    }
+                                    li.vistor_active{
+                                        .panel-title{
+                                            background-color: #f6f8f8;
+                                        }
+                                    }
+                                }
+                                .history-content-detail{
+                                    margin-left: 15px;
+                                    float: left;
+                                    width: 100%;
+                                    li{
+                                        border-width: 1px;
+                                    }
+                                    .panel-group{
+                                        border-left: 1px solid #ccc;
+                                    }
+                                    .timeline{
+                                        li{
+                                            border-width: 0px;
+                                        }
+                                    }
+                                }
+                                .bottom-history-page{
+                                    margin-top: 0px;
+                                    margin-right: 15px;
+                                }
+                            }
+                        }
+                    }
+                    li.vistor_active{
+                        .panel-title{
+                            background-color: rgb(226, 251, 227);
+                        }
+                    }
+                }
+            }
+        }
+        .loading-content{
+            text-align: center;
+            img{
+                margin-top: 60px;
+            }
+        }
+    }   
+}
+  

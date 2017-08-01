@@ -1,0 +1,26 @@
+{
+	"status": 1,
+	"msg": "",
+	"data": [{
+		"label": "\u7b80\u4f53\u9875\u9762",
+		"page_url": "",
+		"page_type": "1",
+		"id": "-4",
+		"show_check": true,
+		"children": []
+	}, {
+		"label": "\u7e41\u4f53\u9875\u9762",
+		"page_url": "",
+		"id": "-5",
+		"page_type": "2",
+		"show_check": true,
+		"children": []
+	}, {
+		"label": "\u82f1\u6587\u9875\u9762",
+		"page_url": "",
+		"id": "-6",
+		"page_type": "3",
+		"show_check": true,
+		"children": []
+	}]
+}

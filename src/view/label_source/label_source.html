@@ -1,0 +1,164 @@
+<div class="label_source" ng-if="vm.show_tree==true">
+  	<div class="col label_list">
+    	<div class="wrapper-md">
+	    	<div class="wrapper-title">
+	    		<button ng-click="vm.add_new_label()" class="btn m-b-xs btn-sm btn-info btn-addon"><i class="fa fa-plus"></i>添加标签</button>
+                <button ng-click="vm.delete_label()" class="btn m-b-xs btn-sm btn-info btn-addon"><i class="fa fa-trash-o"></i>删除标签</button>
+	    	</div>
+	      <div class="b-a bg-light dk r r-2x">
+	        <abn-tree 
+	          tree-data         = "vm.my_data" 
+              tree-control      = "vm.my_tree" 
+	          on-select         = "vm.my_tree_handler(branch)" 
+              initial-selection = "我的推广"
+	          icon-leaf         = "fa fa-file-o"
+	          icon-expand       = "fa fa-plus"
+	          icon-collapse     = "fa fa-minus"
+	          show-edit         = "false"
+              show-check        = "false"
+              show-row          = "false"
+	          >
+	        </abn-tree>
+	      </div>
+	    </div>
+  	</div>
+  	<div class="col label_detail">
+	    <div class="wrapper-data">
+            <div class="label-header">
+                <span>当前选中标签：{{vm.source_path}}</span>
+            </div>
+            <div class="label-body">
+                <form>
+                    <div class="line">
+                        <label>标签名称</label>
+                        <input type="text" ng-model="vm.source_name" class="form-control" ng-required="true">
+                    </div>
+                </form>
+            </div>
+            <div class="label-footer">
+                <button ng-click="vm.add_new_source()" class="btn m-b-xs btn-sm btn-info btn-addon">保存</button>
+            </div>
+	    </div>
+        <div class="wrapper-detail" ng-if="vm.show_detail==true && vm.show_url==false">
+            <table class="table">
+                <thead>
+                    <tr ng-if="vm.show_mask==false">
+                        <th class="key-check">
+                            <label class="i-checks m-b-none"><input type="checkbox" ng-checked="vm.selectAll" ng-click="vm.select_all()"><i></i>
+                        </th>
+                        <th class="key-oper" colspan="3">
+                            <button class="btn m-b-xs btn-sm btn-default" ng-click="vm.reset()">重置参数值</button>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="col-1" ng-if="vm.show_mask==false">
+                        </th>
+                        <th class="col-2">参数类型</th>
+                        <th class="col-3">参数值</th>
+                        <th class="col-4" ng-if="vm.show_mask==false">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in vm.label_data">
+                        <td class="col-1" ng-if="vm.show_mask==false"><label class="i-checks m-b-none"><input type="checkbox" ng-checked="item.checked" ng-click="vm.select_single(item)"><i></i></label>
+                        </td>
+                        <td class="col-2" ng-if="item.edit==false">
+                            <b>{{item.name}}（{{item.param}}）</b>
+                        </td>
+                        <td class="col-2" ng-if="item.edit==true">
+                        <span>{{item.name}}（</span><input type="text" class="form-control" ng-value="item.param" ng-model="item.change_param"><span>）</span>
+                        </td>
+                        <td class="col-3" ng-if="item.edit==false">
+                            <span>{{item.value}}</span>
+                        </td>
+                        <td class="col-3" ng-if="item.edit==true">
+                            <input type="text" class="form-control" ng-value="item.value" ng-model="item.change_value">
+                        </td>
+                        <td class="col-4" ng-if="vm.show_mask==false">
+                           <span>
+                               <a title="编辑" ng-if="item.edit==false"><i  class="fa fa-pencil text-info m-r-xs" ng-click="vm.edit(item)"></i></a>
+                               <a title="取消" ng-if="item.edit==true"><i class="fa fa-undo text-info" ng-click="vm.undo(item)"></i></a>
+                               <a title="保存" ng-if="item.edit==true"><i  class="fa fa-check text-success" ng-click="vm.save(item)"></i></a>
+                               <a title="重置" ng-if="item.edit==true"><i class="fa fa-times text-danger text" ng-click="vm.clear(item)"></i></a>
+                           </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="wrapper-url" ng-if="vm.show_detail==true && vm.show_url==true">
+            <table class="table">
+                <thead>
+                    <tr ng-if="vm.show_mask==false">
+                        <th class="key-check">
+                            <label class="i-checks m-b-none"><input type="checkbox" ng-checked="vm.selectAllurl" ng-click="vm.select_all_url()"><i></i>
+                        </th>
+                        <th class="key-oper" colspan="2">
+                            <button class="btn m-b-xs btn-sm btn-default" ng-click="vm.reset_url()">删除选中</button>
+                            <button class="btn m-b-xs btn-sm btn-default btn-add" ng-click="vm.add_url()">添加</button>
+                            <input type="text" class="form-control" ng-model="vm.url_detail"> 
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="col-1" ng-if="vm.show_mask==false">
+                        </th>
+                        <th class="col-2">URL地址</th>
+                        <th class="col-4" ng-if="vm.show_mask==false">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="url in vm.url_data" ng-if="url.show_url">
+                        <td class="col-1" ng-if="vm.show_mask==false"><label class="i-checks m-b-none"><input type="checkbox" ng-checked="url.checked" ng-click="vm.select_single_url(url)"><i></i></label>
+                        </td>
+                        <td class="col-2" ng-if="url.edit==false">{{url.url}}</td>
+                        <td class="col-2" ng-if="url.edit==true">
+                            <input type="text" class="form-control" ng-value="url.url" ng-model="url.change_value">
+                        </td>
+                        <td class="col-4" ng-if="vm.show_mask==false">
+                           <span>
+                               <a title="编辑" ng-if="url.edit==false"><i class="fa fa-pencil text-info m-r-xs" ng-click="vm.edit_url(url)"></i></a>
+                               <a title="取消" ng-if="url.edit==true"><i class="fa fa-undo text-info" ng-click="vm.undo_url(url)"></i></a>
+                               <a title="保存" ng-if="url.edit==true"><i  class="fa fa-check text-success" ng-click="vm.save_url(url)"></i></a>
+                               <a title="删除" ng-if="url.edit==false"><i class="fa fa-trash text-danger text" ng-click="vm.del_url(url)"></i></a>
+                           </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+  	</div>
+</div>
+<div class="loading" ng-if="vm.show_tree==false">
+    <img src="../../common/images/loading.gif">
+</div>
+
+
+<script type="text/ng-template" id="myModalDelete.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">是否确定删除</h3>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-info w-xs" type="button" ng-click="$modal.del()">确认</button>
+        <button class="btn btn-danger w-xs" type="button" ng-click="$modal.cancel()">取消</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="myUrlDelete.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">是否确定删除</h3>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-info w-xs" type="button" ng-click="$modal.confirm_del_url()">确认</button>
+        <button class="btn btn-danger w-xs" type="button" ng-click="$modal.cancel()">取消</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="myUrlBatchDelete.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">是否确定删除</h3>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-info w-xs" type="button" ng-click="$modal.confirm_del_batch_url()">确认</button>
+        <button class="btn btn-danger w-xs" type="button" ng-click="$modal.cancel()">取消</button>
+    </div>
+</script>

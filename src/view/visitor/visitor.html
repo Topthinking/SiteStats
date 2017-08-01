@@ -1,0 +1,105 @@
+<div class="visitor" ng-if="vm.show_tree==true">
+
+	<div class="right col-md-9" ng-class="vm.rightActive">
+		<div class="date">
+			<div class="btn-group select-time">
+	          <button type="button" class="btn btn-default" ng-class="vm.DateActive(2)" ng-click="vm.setDate_type(2)">今天</button>
+	          <button type="button" class="btn btn-default" ng-class="vm.DateActive(3)" ng-click="vm.setDate_type(3)">昨天</button>
+	          <button type="button" class="btn btn-default active" ng-class="vm.DateActive(1)" ng-click="vm.setDate_type(1)">最近7天</button>
+	          <button type="button" class="btn btn-default" ng-class="vm.DateActive(4)" ng-click="vm.setDate_type(4)">最近30天</button>
+	       </div>
+	        <div class="date-select">
+	        	<div class="start-date">
+	          		<input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" is-open="vm.popup.opened1" datepicker-options="vm.dateOptions1" ng-required="true" close-text="关闭" current-text="今天" clear-text="清空" alt-input-formats="altInputFormats" ng-readonly="true" ng-model="vm.dt1" ng-change="vm.select_date1()" ng-click="vm.open1()"/>
+		        	<i class="show-calendar glyphicon glyphicon-calendar" ng-click="vm.open1()"></i>
+		        </div>
+		        <div class="to-date" ng-if="vm.dt1 != ''">至</div>
+	          	<div class="end-date" ng-if="vm.dt1 != ''">
+	          		<input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" is-open="vm.popup.opened2" datepicker-options="vm.dateOptions2" ng-required="true" close-text="关闭" current-text="今天" clear-text="清空" alt-input-formats="altInputFormats" ng-readonly="true" ng-model="vm.dt2" ng-change="vm.select_date2()" ng-click="vm.open2()"/>
+	            	<i class="show-calendar glyphicon glyphicon-calendar" ng-click="vm.open2()"></i>
+	          	</div>
+	           	<div class="download">
+	      			<span ng-click="vm.export_data()" class="text-hover">{{vm.download_name}}</span>
+  				</div>
+	      	</div>	      	
+		</div>
+	<div ng-if="vm.show_data==true">
+
+		<div class="content" ng-if="vm.show_vistor_data==true">
+			<div class="title"> 				
+		      	<div class="title-right">
+		      		<!--page-->
+						<ul ng-if="vm.show_page" previous-text="上一页" next-text="下一页" first-text="首页" last-text="末页"uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" max-size="vm.maxSize" class="pagination-sm" boundary-links="true" num-visitors="numvisitors" ng-change="vm.pageChanged()"></ul>
+					<!--page-->
+		      	</div>
+			</div>
+			<div class="list">
+
+			<!--data-->
+			  <div class="table-responsive">
+				<table class="table table-bordered table-striped" style="padding: 5px;">
+						<tr>
+							<td><strong>created</strong></td>
+							<td><strong>first_name</strong></td>
+							<td><strong>last_name</strong></td>
+							<td><strong>email</strong></td>
+							<td><strong>country</strong></td>
+							<td><strong>city</strong></td>
+							<td><strong>name</strong></td>	
+							<td><strong>ref_url</strong></td>	
+							<td><strong>visit_time</strong></td>		
+						</tr>		
+						<tr ng-repeat="row in vm.rowCollection">
+							<td>
+								<a href="jacascript:;">{{row.created}}</a>
+							</td>							
+							<td>
+								<a href="jacascript:;">{{row.first_name}}</a>
+							</td>
+							<td>
+								<a href="jacascript:;">{{row.last_name}}</a>
+							</td>
+							<td>
+								<a href="jacascript:;" title="{{row.email}}">{{row.email}}</a>
+							</td>
+							<td>
+								<a href="jacascript:;">{{row.country}}</a>
+							</td>
+							<td>
+								<a href="jacascript:;">{{row.city}}</a>
+							</td>
+							<td>
+								<a href="jacascript:;" ng-if="row.name!==false">{{row.name}}</a>
+							</td>
+							<td class="ref_url">
+								<a href="jacascript:;" title="{{row.ref_url}}">{{row.ref_url | Cut_url_v}}</a>
+							</td>
+							<td>
+								<a href="jacascript:;">{{row.visit_time}}</a>
+							</td>
+						</tr>
+					
+		  		</table>
+		  	  </div>	
+	  		<!--data-->
+
+	  		<!--page-->
+	  		
+			<ul ng-if="vm.show_page" style="margin:17px 20px 15px 0px;" previous-text="上一页" next-text="下一页" first-text="首页" last-text="末页"uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" max-size="vm.maxSize" class="pagination-sm" boundary-links="true" num-visitors="numvisitors" ng-change="vm.pageChanged()"></ul>
+			<!--page-->
+
+	  		</div>
+		</div>
+		<div class="loading-content" ng-if="vm.show_vistor_data==false">
+			<img src="../../common/images/loading.gif">
+		</div>
+		</div>
+		
+		<div class="loading-data" ng-if="vm.show_data==false">
+			<img src="../../common/images/loading.gif">
+		</div>
+	</div>
+</div>
+<div class="loading" ng-if="vm.show_tree==false">
+	<img src="../../common/images/loading.gif">
+</div>

@@ -1,0 +1,39 @@
+<div class="city-list">
+    <div class="btn-group" dropdown ng-mouseleave="leave_city()">
+        <button class="btn btn-default btn-sm btn-bg dropdown-toggle btn-area" data-toggle="dropdown" ng-click="reset_site()">
+            <span class="dropdown-label">{{cityPath}}</span> 
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu text-left text-sm tree-1" role="menu" ng-class="tree_site">
+            <li class="tree-li-1" ng-repeat="province in cityData">
+                <a  ng-click="select_city(province.id)" 
+                    ng-mouseover="enter_province(province.id)"  
+                    ng-class="active_province(province.id)"
+                >{{province.name}}</a>
+            </li>                            
+        </ul>
+        <div ng-mouseleave="leave_city()">
+        <div class="city-detail" ng-if="city_detail" ng-class="tree_site">
+            <ul class="dropdown-menu text-left text-sm tree-2">
+               <li ng-repeat="city in provinces">
+                   <a ng-click="select_city(city.id)"
+                      ng-mouseover="enter_city(city.id)"
+                      ng-class="active_city(city.id)"
+                   >{{city.name}}</a>
+               </li> 
+            </ul>
+        </div>
+
+        <div class="cy-detail" ng-if="cy_detail" ng-class="tree_site" ng-mouseover="en_cy()">
+            <ul class="dropdown-menu text-left text-sm tree-3">
+               <li ng-repeat="cy in citys">
+                   <a ng-click="select_city(cy.id)"
+                      ng-mouseover="enter_cy(cy.id)"
+                      ng-class="active_cy(cy.id)"
+                   >{{cy.name}}</a>
+               </li> 
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>

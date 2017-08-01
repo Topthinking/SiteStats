@@ -1,0 +1,517 @@
+<div class="source" ng-if="vm.show_tree==true">
+	<div class="left col col-md-3">
+		<div class="wrapper-md">
+	      <div class="b-a bg-light dk r r-2x">
+	        <abn-tree 
+	          tree-data         = "vm.my_data"
+	          on-select         = "vm.my_tree_handler(branch)"
+	          on-checked        = "vm.my_tree_checked(branch)"
+	          expand-level      = "1"
+	          on-selection      = "vm.selection"
+	          icon-leaf         = "fa fa-file-o"
+	          icon-expand       = "fa fa-plus"
+	          icon-collapse     = "fa fa-minus"
+	          show-edit         = "false"
+	          show-check        = "true"
+	          show-row          = "true"
+	          >
+	        </abn-tree>
+	      </div>
+    	</div>
+	</div>
+	<div class="right col-md-9" ng-class="vm.rightActive">
+		<div class="date">
+		    <div class="btn-group select-time">
+	          <button type="button" class="btn btn-default" ng-class="vm.DateActive(1)" ng-click="vm.setDate_type(1)">今天</button>
+	          <button type="button" class="btn btn-default" ng-class="vm.DateActive(2)" ng-click="vm.setDate_type(2)">昨天</button>
+	          <button type="button" class="btn btn-default" ng-class="vm.DateActive(3)" ng-click="vm.setDate_type(3)">最近7天</button>
+	          <button type="button" class="btn btn-default" ng-class="vm.DateActive(4)" ng-click="vm.setDate_type(4)">最近30天</button>	          
+	        </div>
+	        <div class="btn-group dropdown device_show">
+		        <button class="btn btn-default btn-sm btn-bg dropdown-toggle" data-toggle="dropdown">
+		          <span class="dropdown-label">{{vm.vistor_device}}</span>
+		          <span class="caret"></span>
+		        </button>
+		        <ul class="dropdown-menu text-left text-sm">
+		        	<li><a ng-click="vm.vistor_device_data(0)" ng-if="vm.show_vistor_device(0,'全部设备')">全部设备</a></li>
+		          	<li><a ng-click="vm.vistor_device_data(1)" ng-if="vm.show_vistor_device(1,'Mobile')">Mobile</a></li>
+		          	<li><a ng-click="vm.vistor_device_data(2)" ng-if="vm.show_vistor_device(2,'PC')">PC</a></li>
+		          	<li><a ng-click="vm.vistor_device_data(3)" ng-if="vm.show_vistor_device(3,'其他')">其他</a></li>
+		        </ul>
+	      	</div>
+	      	<city
+	      		city-data     = "vm.Citys"
+	      		city-control  = "vm.city_ctrl"
+	      		on-select     = "vm.select_city(cityId)"
+	      		city-list     = "vm.city_list"
+	      		city-path     = "vm.city_path"
+	      		city-param    = "vm.city_param"
+	      	>
+	      	</city>	
+	        <div class="date-select">
+	        	<div class="start-date">
+	          		<input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" is-open="vm.popup.opened1" datepicker-options="vm.dateOptions1" ng-required="true" close-text="关闭" current-text="今天" clear-text="清空" alt-input-formats="altInputFormats" ng-readonly="true" ng-model="vm.dt1" ng-change="vm.select_date1()" ng-click="vm.open1()"/>
+		        	<i class="show-calendar glyphicon glyphicon-calendar" ng-click="vm.open1()"></i>
+		        </div>
+		        <div class="to-date" ng-if="vm.dt1 != ''">至</div>
+	          	<div class="end-date" ng-if="vm.dt1 != ''">
+	          		<input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" is-open="vm.popup.opened2" datepicker-options="vm.dateOptions2" ng-required="true" close-text="关闭" current-text="今天" clear-text="清空" alt-input-formats="altInputFormats" ng-readonly="true" ng-model="vm.dt2" ng-change="vm.select_date2()" ng-click="vm.open2()"/>
+	            	<i class="show-calendar glyphicon glyphicon-calendar" ng-click="vm.open2()"></i>
+	          	</div>
+	           	<div class="download">
+	      			<span ng-click="vm.export_data()" class="text-hover">{{vm.download_name}}</span>
+  				</div>
+	      	</div>	      	
+		</div>
+		<div ng-if="vm.show_data==true">
+		<div class="data panel-footer bg-info text-center no-padder" >
+			<div class="row no-gutter">
+		            <div class="col-xs-2">
+		              <div class="wrapper">
+		                <span class="m-b-xs h3 block text-white">{{vm.param.pv}}</span>
+		                <small class="text-muted">浏览量（PV）</small>
+		              </div>
+		            </div>
+		            <div class="col-xs-2 dk">
+		              <div class="wrapper">
+		                <span class="m-b-xs h3 block text-white">{{vm.param.uv}}</span>
+		                <small class="text-muted">访客数（UV）</small>
+		              </div>
+		            </div>
+		            <div class="col-xs-2">
+		              <div class="wrapper">
+		                <span class="m-b-xs h3 block text-white">{{vm.param.new_vistor}}</span>
+		                <small class="text-muted">新访客数</small>
+		              </div>
+		            </div>
+		            <div class="col-xs-2 dk">
+		              <div class="wrapper">
+		                <span class="m-b-xs h3 block text-white">{{vm.param.ip}}</span>
+		                <small class="text-muted">IP数</small>
+		              </div>
+		            </div>
+		            <div class="col-xs-2 ">
+		              <div class="wrapper">
+		                <span class="m-b-xs h3 block text-white text-hover" ng-click="vm.vistor_param_data(1)">{{vm.param.leads}}</span>
+		                <small class="text-muted">登记数（Leads）</small>
+		              </div>
+		            </div>
+		            <div class="col-xs-2 dk">
+		              <div class="wrapper">
+		                <span class="m-b-xs h3 block text-white">{{vm.param.uv==0 ? 0 : ((vm.param.leads/vm.param.uv)*100).toFixed(2)}}%</span>
+		                <small class="text-muted">登记转化率</small>
+		              </div>
+		            </div>
+		    </div>
+		</div>
+		<div class="chart-detail">
+			<div class="chart-title">
+				<div class="title">
+					<div class="btn-group" dropdown>
+					<button class="btn btn-default btn-sm btn-bg dropdown-toggle" data-toggle="dropdown">
+		        		<span class="dropdown-label">{{vm.cur_kpi}}</span> 
+		        		<span class="caret"></span>
+		        	</button>
+		          	<ul class="dropdown-menu text-left text-sm">
+			          	<li><a ng-click="vm.kpi(0)" ng-if="vm.show_kpi(0,'浏览量（PV）')">浏览量（PV）</a></li>
+			            <li><a ng-click="vm.kpi(1)" ng-if="vm.show_kpi(1,'访客数（UV）')">访客数（UV）</a></li>
+			            <li><a ng-click="vm.kpi(4)" ng-if="vm.show_kpi(4,'新访客数')">新访客数</a></li>
+			            <li><a ng-click="vm.kpi(2)" ng-if="vm.show_kpi(2,'IP数')">IP数</a></li>
+			            <li><a ng-click="vm.kpi(3)" ng-if="vm.show_kpi(3,'登记数（Leads）')">登记数（Leads）</a></li>
+		          	</ul>
+		          	</div>
+		          	<span class="line-source">{{vm.source_path}}</span>
+					<span class="line-param">{{vm.source_line_name}}：{{vm.source_line_data}}</span>
+					<label class="i-switch bg-warning pull-right" ng-init="vm.showSpline=false">
+              			<input type="checkbox" ng-model="vm.showSpline" class="ng-pristine ng-untouched ng-valid">
+              			<i></i>
+            		</label>
+				</div>
+			</div>
+			<div ng-if="vm.showSpline">
+				<div class="chart-polyline">
+					<div class="polyline-detail">
+					<polyline id="polyline-chart" legend="vm.polyline_legend" data="vm.polyline_data" item="vm.polyline_item"></polyline>
+					</div>
+				</div>
+				<div class="chart-pie">
+					<div class="pie-detail">
+			        <pie id="pie-chart" legend="vm.pie_legend" data="vm.pie_data" name="vm.pie_name"></pie>
+			        </div>
+				</div>
+				<div class="chart-columnar">
+					<div class="columnar-detail">
+					<columnar id="columnar-chart" legend="vm.columnar_legend" data="vm.columnar_data" item="vm.columnar_item"></columnar>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content" ng-if="vm.show_vistor_data==true">
+			<div class="title">
+				<div class="title-left">
+					<div class="btn-group dropdown">
+			        	<button class="btn btn-default btn-sm btn-bg dropdown-toggle" data-toggle="dropdown">
+			        		<span class="dropdown-label">{{vm.vistor_param}}</span> 
+			        		<span class="caret"></span>
+			        	</button>
+			          	<ul class="dropdown-menu text-left text-sm">
+				          	<li><a ng-click="vm.vistor_param_data(0)" ng-if="vm.show_vistor_param(0,'全部访客')">全部访客</a></li>
+				            <li><a ng-click="vm.vistor_param_data(1)" ng-if="vm.show_vistor_param(1,'已登记')">已登记</a></li>
+				            <li><a ng-click="vm.vistor_param_data(2)" ng-if="vm.show_vistor_param(2,'未登记')">未登记</a></li>
+			          	</ul>
+		        	</div>
+		        	<div class="btn-group import-leads" nv-file-drop="" uploader="vm.uploader">
+			      		<button class="btn btn-sm btn-bg btn-default">导入Leads</button>
+			      		<input id="fileupload" type="file" nv-file-select="" uploader="vm.uploader" >
+			      	</div>		      			 
+			      	<div class="btn-group">
+			        	<button class="btn btn-sm btn-bg btn-default" ng-click="vm.refresh_vistor()"><i class="fa fa-refresh"></i></button>
+			      	</div>			      	
+		      	</div>
+		      	<div class="title-right">
+		      		<!--page-->
+						<ul ng-if="vm.show_page" previous-text="上一页" next-text="下一页" first-text="首页" last-text="末页"uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" max-size="vm.maxSize" class="pagination-sm" boundary-links="true" num-pages="numPages" ng-change="vm.pageChanged()"></ul>
+					<!--page-->
+		      	</div>
+			</div>
+			<div class="list">
+
+			<!--data-->
+				<ul class="vistor-list list-group list-group-lg no-radius m-b-none">
+					<uib-accordion close-others="true">
+				    <li ng-repeat="row in vm.rowCollection" class="clearfix">
+				    	<div uib-accordion-group class="panel-default">
+				    	 	<uib-accordion-heading>
+					    	 	<a href="javascript:;" class="avatar thumb pull-left m-r">
+						        	<img ng-src="{{vm.face_img}}">
+						      	</a>
+						      	<div class="pull-right text-sm text-muted">
+							        <div>
+							        	<span>
+										<i class="icon-screen-desktop" ng-if="row['desc'].device_type==1"></i>
+				    	 				<i class="icon-screen-smartphone" ng-if="row['desc'].device_type==2"></i>
+				    	 				{{row['desc'].date}}</span>
+										<span class="url">
+											<a href="javascript:;" uib-popover="{{row['desc'].url}}" popover-trigger="mouseenter" ng-if="vm.judge_url(row['desc'].url)==true" popover-placement="left">{{row['desc'].url | Cut_url}}</a>
+								         	<a href="javascript:;" ng-if="vm.judge_url(row['desc'].url)==false">{{row['desc'].url}}</a>
+								        </span>
+									</div>
+						      	</div>
+						      	<div class="clear">
+							        <div class="spread">
+										<span class="source">来源：
+										<a href="javascript:;" title="{{row['desc'].ref_url}}" ng-if="row['desc'].ref_url!=''">{{row['content'].source}}</a>
+										<span ng-if="row['desc'].ref_url==''">{{row['content'].source}}</span>
+										<small ng-if="row['content'].keyword!=null">（{{row['content'].keyword}}）</small>
+										</span>
+										<strong class="reg_state register" ng-if="row['content'].register==1">已登记</strong>
+										<b ng-if="row['content'].leads_num>1"><i>x</i>{{row['content'].leads_num}}</b>
+										<strong class="reg_state" ng-if="row['content'].register==0">未登记</strong>
+									</div>
+									<div  class="ip">
+										<span>{{row['content'].city}}（{{row['content'].ip}}）</span>
+										<span ng-if="row['content'].qualified==1" class="qualified">qualified</span>				
+									</div>
+						      	</div>
+					      	</uib-accordion-heading>
+					      	<div class="detail_title">
+					      		<span ng-click="vm.change_tag(0,row)" ng-class="row.detail_path_active"><a href="javascript:;">访问路径</a></span>
+					      		<span ng-if="row['content'].register==1" ng-click="vm.change_tag(1,row)" ng-class="row.detail_leads_active"><a href="javascript:;">登记信息</a></span>
+					      		<span ng-if="row['content'].register==0" class="no_reg"><a href="javascript:;">登记信息</a></span>
+					      		<span ng-click="vm.change_tag(2,row)" ng-class="row.detail_history_active"><a href="javascript:;">历史访问</a></span>
+					      	</div>
+					      	<div class="detail_path" ng-if="row.detail_path">
+						      	<div class="col">
+								    <div class="wrapper">
+								      <ul class="timeline">
+										<li class="tl-item">
+								          <div class="tl-wrap b-info">
+								            <div class="tl-content col-1">
+								              打开时间
+								            </div>
+								            <div class="tl-content col-2">
+								            	停留时长
+								            </div>
+								            <div class="tl-content col-3">
+								            	页面标签名称
+								            </div>
+								            <div class="tl-content col-4 page_url">
+								              页面地址
+								            </div>
+								          </div>
+								        </li>
+										<li ng-repeat="item in row.timeline" class="tl-item">
+								          <div class="tl-wrap b-info">
+								          	<div ng-if="item.reg==1">
+									            <div class="tl-content reg">
+									              {{item.open_time}}&nbsp;&nbsp;&nbsp;&nbsp;提交登记
+									            </div>
+									        </div>
+
+									        <div ng-if="item.reg==0">
+									            <div class="tl-content col-1">
+									              {{item.open_time}}
+									            </div>
+									            <div class="tl-content col-2">
+									            	{{item.stay_time}}
+									            </div>
+									            <div class="tl-content col-3">
+									            	<a href="javascript:;" uib-popover="{{item.page_name}}" popover-trigger="mouseenter" ng-if="vm.judge_name(item.page_name)==true" popover-placement="left">{{item.page_name | Page_name}}</a>
+									             	<span ng-if="vm.judge_name(item.page_name)==false">{{item.page_name}}</span>
+									            </div>
+									            <div class="tl-content col-4">
+									            	<a href="javascript:;" uib-popover="{{item.page_url}}" popover-trigger="mouseenter" ng-if="vm.judge_url(item.page_url)==true" popover-placement="left">{{item.page_url | Cut_url}}</a>
+									             	<span ng-if="vm.judge_url(item.page_url)==false">{{item.page_url}}</span>
+									            </div>
+									        </div>
+								          </div>
+								        </li>
+								      </ul>
+								    </div>
+								</div>
+							</div>
+							<div class="detail_leads" ng-if="row.detail_leads">
+								<div class="leads_loading" ng-if="row.show_detail_leads==false">
+									<img src="../../common/images/loading-1.gif">
+								</div>
+								<div class="leads_content" ng-if="row.show_detail_leads==true">
+									<div ng-repeat="leads_list in row.leads_info" class="leads_list">
+										<div class="line">
+											<label>first_name：</label>
+											<span>{{leads_list.first_name}}</span>
+										</div>
+										
+										<div class="line">
+											<label>last_name：</label>
+											<span>{{leads_list.last_name}}</span>
+										</div>
+
+										<div class="line">
+											<label>email：</label>
+											<span>{{leads_list.email}}</span>
+										</div>
+
+										<div class="line">
+											<label>city：</label>
+											<span>{{leads_list.city}}</span>
+										</div>
+
+										<div class="line">
+											<label>phone：</label>
+											<span>{{leads_list.phone}}</span>
+										</div>
+
+										<div class="line">
+											<label>country：</label>
+											<span>{{leads_list.country}}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="detail_history" ng-if="row.detail_history">
+								<div class="history_loading" ng-if="row.show_detail_history==false">
+									<img src="../../common/images/loading-1.gif">
+								</div>
+								<div class="history_content" ng-if="row.show_detail_history==true">
+									<div class="title">
+										<div class="title-left">
+										<div class="btn-group dropdown">
+								        	<button class="btn btn-default btn-sm btn-bg dropdown-toggle" data-toggle="dropdown">
+								        		<span class="dropdown-label">{{row.vistor_history_param}}</span> 
+								        		<span class="caret"></span>
+								        	</button>
+									          <ul class="dropdown-menu text-left text-sm">
+									          	<li><a ng-click="vm.history_param_data(0,row)" ng-if="row.show_history_0">全部访客</a></li>
+									            <li><a ng-click="vm.history_param_data(1,row)" ng-if="row.show_history_1">已登记</a></li>
+									            <li><a ng-click="vm.history_param_data(2,row)" ng-if="row.show_history_2">未登记</a></li>
+									          </ul>
+							        	</div>
+								      	<div class="btn-group dropdown">
+									        <button class="btn btn-default btn-sm btn-bg dropdown-toggle" data-toggle="dropdown">
+									          <span class="dropdown-label">{{row.vistor_history_device}}</span>
+									          <span class="caret"></span>
+									        </button>
+									        <ul class="dropdown-menu text-left text-sm">
+									        	<li><a ng-click="vm.history_device_data(0,row)" ng-if="row.show_history_device_0">全部设备</a></li>
+									          	<li><a ng-click="vm.history_device_data(1,row)" ng-if="row.show_history_device_1">Mobile</a></li>
+									          	<li><a ng-click="vm.history_device_data(2,row)" ng-if="row.show_history_device_2">PC</a></li>
+									        </ul>
+								      	</div>
+								      	<div class="btn-group">
+								        	<button class="btn btn-sm btn-bg btn-default" ng-click="vm.refresh_vistor_history(row)"><i class="fa fa-refresh"></i></button>
+								      	</div>
+								      	</div>
+								      	<div class="title-right">
+								      		<!--history-page-->
+												<ul ng-if="row.show_history_page" previous-text="上一页" next-text="下一页" first-text="首页" last-text="末页" uib-pagination total-items="row.leads_history.totalItems" ng-model="row.leads_history.currentPage" max-size="row.leads_history.maxSize" class="pagination-sm history-page" boundary-links="true" num-pages="numPages" ng-change="vm.historypageChanged(row)"></ul>
+											<!--history-page-->
+								      	</div>
+									</div>									
+
+									<!-- history-content -->
+									<div class="history-content-detail">
+									<ul class="vistor-history-list list-group list-group-lg no-radius m-b-none">
+										<uib-accordion close-others="true">
+										<li ng-repeat="history in row.leads_history.list" class="clearfix">
+										<div uib-accordion-group class="panel-default">
+											<uib-accordion-heading>
+											<a href="javascript:;" class="avatar thumb pull-left m-r">
+						        			<img ng-src="{{vm.face_img}}">
+						      				</a>
+									      	<div class="pull-right text-sm text-muted">
+										        <div>
+										        	<span>
+													<i class="icon-screen-desktop" ng-if="history['desc'].device_type==1"></i>
+							    	 				<i class="icon-screen-smartphone" ng-if="history['desc'].device_type==2"></i>
+							    	 				{{history['desc'].date}}</span>
+													<span class="url">
+														<a href="javascript:;" uib-popover="{{history['desc'].url}}" popover-trigger="mouseenter" ng-if="vm.judge_url(history['desc'].url)==true" popover-placement="left">{{history['desc'].url | Cut_url}}</a>
+											         	<a href="javascript:;" ng-if="vm.judge_url(history['desc'].url)==false">{{history['desc'].url}}</a>
+											        </span>
+												</div>
+									      	</div>
+									      	<div class="clear">
+										        <div class="spread">
+													<span class="source">来源：
+													<a href="javascript:;" title="{{history['desc'].ref_url}}" ng-if="history['desc'].ref_url!=''">{{history['content'].source}}</a>
+													<span ng-if="history['desc'].ref_url==''">{{history['content'].source}}</span>
+													<small ng-if="history['content'].keyword!=null">（{{history['content'].keyword}}）</small>
+													</span>
+													<strong class="reg_state register" ng-if="history['content'].register==1">已登记</strong>
+													<b ng-if="row['content'].leads_num>1"><i>x</i>{{row['content'].leads_num}}</b>
+													<strong class="reg_state" ng-if="history['content'].register==0">未登记</strong>
+												</div>
+												<div  class="ip">
+													<span>{{history['content'].city}}（{{history['content'].ip}}）</span>				
+												</div>
+									      	</div>
+									      	</uib-accordion-heading>
+									      	<div class="detail_title" ng-init="vm.change_tag(0,history)">
+									      		<span ng-click="vm.change_tag(0,history)" ng-class="history.detail_path_active"><a href="javascript:;">访问路径</a></span>
+									      		<span ng-if="history['content'].register==1" ng-click="vm.change_tag(1,history,true)" ng-class="history.detail_leads_active"><a href="javascript:;">登记信息</a></span>
+									      		<span ng-if="history['content'].register==0" class="no_reg"><a href="javascript:;">登记信息</a></span>
+					      					</div>
+									      	<div class="detail_path" ng-if="history.detail_path">
+										      	<div class="col">
+												    <div class="wrapper">
+												      <ul class="timeline">
+														<li class="tl-item">
+												          <div class="tl-wrap b-info">
+												            <div class="tl-content col-1">
+												              打开时间
+												            </div>
+												             <div class="tl-content col-2">
+								            					停留时长
+												            </div>
+												            <div class="tl-content col-3">
+												            	页面标签名称
+												            </div>
+												            <div class="tl-content col-4 page_url">
+												              页面地址
+												            </div>
+												          </div>
+												        </li>
+														<li ng-repeat="hitem in history.timeline" class="tl-item">
+												          <div class="tl-wrap b-info">
+												          	<div ng-if="hitem.reg==1">
+													            <div class="tl-content reg">
+													              {{hitem.open_time}}&nbsp;&nbsp;&nbsp;&nbsp;提交登记
+													            </div>
+													        </div>
+
+													        <div ng-if="hitem.reg==0">
+													            <div class="tl-content col-1">
+													              {{hitem.open_time}}
+													            </div>
+													            <div class="tl-content col-2">
+									            					{{hitem.stay_time}}
+									            				</div>
+													            <div class="tl-content col-3">
+													            	<a href="javascript:;" uib-popover="{{hitem.page_name}}" popover-trigger="mouseenter" ng-if="vm.judge_name(hitem.page_name)==true" popover-placement="left">{{hitem.page_name | Page_name}}</a>
+													             	<span ng-if="vm.judge_name(hitem.page_name)==false">{{hitem.page_name}}</span>
+													            </div>
+													            <div class="tl-content col-4">
+													            <a href="javascript:;" uib-popover="{{hitem.page_url}}" popover-trigger="mouseenter" ng-if="vm.judge_url(hitem.page_url)==true" popover-placement="left">{{hitem.page_url | Cut_url}}</a>
+													             <span ng-if="vm.judge_url(hitem.page_url)==false">{{hitem.page_url}}</span>
+													            </div>
+													        </div>
+												          </div>
+												        </li>
+												      </ul>
+												    </div>
+												</div>
+											</div>
+											<div class="detail_leads" ng-if="history.detail_leads">
+												<div class="leads_loading" ng-if="history.show_detail_leads==false">
+													<img src="../../common/images/loading-1.gif">
+												</div>
+												<div class="leads_content" ng-if="history.show_detail_leads==true">
+													<div ng-repeat="history_leads_list in history.leads_info" class="leads_list">
+														<div class="line">
+															<label>first_name：</label>
+															<span>{{history_leads_list.first_name}}</span>
+														</div>
+														
+														<div class="line">
+															<label>last_name：</label>
+															<span>{{history_leads_list.last_name}}</span>
+														</div>
+
+														<div class="line">
+															<label>email：</label>
+															<span>{{history_leads_list.email}}</span>
+														</div>
+
+														<div class="line">
+															<label>city：</label>
+															<span>{{history_leads_list.city}}</span>
+														</div>
+
+														<div class="line">
+															<label>phone：</label>
+															<span>{{history_leads_list.phone}}</span>
+														</div>
+
+														<div class="line">
+															<label>country：</label>
+															<span>{{history_leads_list.country}}</span>
+														</div>
+													</div>
+												</div>
+											</div>
+					      				</div>
+										</li>
+										</uib-accordion>
+									</ul>
+									</div>
+									<!-- history-content -->
+
+									<!--history-page-->
+										<ul ng-if="row.show_history_page" previous-text="上一页" next-text="下一页" first-text="首页" last-text="末页"uib-pagination total-items="row.leads_history.totalItems" ng-model="row.leads_history.currentPage" max-size="row.leads_history.maxSize" class="pagination-sm bottom-history-page" boundary-links="true" num-pages="numPages" ng-change="vm.historypageChanged(row)"></ul>
+									<!--history-page-->
+								</div>
+							</div>
+				      	</div>
+				    </li>
+				    </uib-accordion>
+		  		</ul>
+	  		<!--data-->
+
+	  		<!--page-->
+				<ul ng-if="vm.show_page" previous-text="上一页" next-text="下一页" first-text="首页" last-text="末页"uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" max-size="vm.maxSize" class="pagination-sm bottom-page" boundary-links="true" num-pages="numPages" ng-change="vm.pageChanged()"></ul>
+			<!--page-->
+
+	  		</div>
+		</div>
+		<div class="loading-content" ng-if="vm.show_vistor_data==false">
+			<img src="../../common/images/loading.gif">
+		</div>
+		</div>
+		<div class="loading-data" ng-if="vm.show_data==false">
+			<img src="../../common/images/loading.gif">
+		</div>
+	</div>
+</div>
+<div class="loading" ng-if="vm.show_tree==false">
+	<img src="../../common/images/loading.gif">
+</div>

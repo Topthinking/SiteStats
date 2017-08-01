@@ -1,0 +1,9 @@
+<ul class="nav nav-list nav-pills nav-stacked abn-tree">
+<li ng-repeat="row in tree_rows | filter:{visible:true} track by row.branch.uid"ng-animate="'abn-tree-animate'" ng-class="'level-' + {{ row.level }} + (row.branch.selected ? ' active':'') + ' ' +row.classes.join(' ')" class="abn-tree-row" ng-if="showRow==true || row.branch.show_row==true" >
+<a ng-click="user_clicks_branch(row.branch,$event)">
+<input ng-if="showCheck&&row.branch.show_check" type="checkbox" ng-checked="row.branch.checked" ng-click="user_checked_branch(row.branch,$event)" class="indented tree-icon">
+<i ng-class="row.tree_icon" ng-click="$event.stopPropagation();row.branch.expanded = !row.branch.expanded" class="indented tree-icon" ng-if="row.branch.show_check"></i>
+<span class="indented tree-label">{{ row.label }}</span>
+</a>
+</li>
+</ul>

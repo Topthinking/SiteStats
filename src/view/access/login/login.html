@@ -1,0 +1,27 @@
+<div class="container w-xxl w-auto-xs login-container">   
+  <div class="m-b-lg">
+    <div align="center" class="login_logo">
+      <img src="../../../common/images/logo.png" alt="...">
+    </div>
+    <form name="form" class="form-validation">
+      <div class="text-danger wrapper text-left" ng-if="vm.show_error">
+          {{vm.error}}
+      </div>
+      <div class="list-group list-group-sm">
+        <div class="list-group-item">
+          <input type="name" placeholder="Name" class="form-control no-border" ng-model="vm.name" required>
+        </div>
+        <div class="list-group-item">
+           <input type="password" placeholder="Password" class="form-control no-border" ng-model="vm.password" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="vm.login()" ng-disabled='form.$invalid'>Login</button>
+      <div class="line line-dashed"></div>
+      </form>
+      <div class="text-center">
+        <p>
+        <small class="text-muted">利物浦大学数据分析</small>
+        </p>
+      </div>
+  </div>
+</div>
