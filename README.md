@@ -6,7 +6,7 @@ webpack + angular1 + oclazyload + angular-ui-router + angular-bootstrap + echart
 
 ## 下载安装 (运行`node8+ `)
 
- 	git clone https://github.com/Topthinking/SiteStats.git
+ 	git clone https://github.com/Topthinking/angular-site-stats.git
 	
  	cd SiteStats
 
