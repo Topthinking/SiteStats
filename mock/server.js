@@ -82,5 +82,4 @@ function mockServer(){
     server.listen(port);
     console.log("Server runing at port: " + port + ".");
 }
-
 mockServer();
